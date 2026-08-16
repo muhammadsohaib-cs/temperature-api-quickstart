@@ -73,11 +73,15 @@ export default function MapViewport({
     minZoom: 0,
     maxZoom: 20,
     tileSize: 256,
-    renderSubLayers: (props) => {
+    renderSubLayers: (props: any) => {
       if (!props || !props.tile || !props.tile.bbox) return null;
-      const { west, south, east, north } = props.tile.bbox;
+      const bbox = props.tile.bbox;
+      const west = typeof bbox.west === 'number' ? bbox.west : bbox[0];
+      const south = typeof bbox.south === 'number' ? bbox.south : bbox[1];
+      const east = typeof bbox.east === 'number' ? bbox.east : bbox[2];
+      const north = typeof bbox.north === 'number' ? bbox.north : bbox[3];
       return new BitmapLayer(props, {
-        data: null,
+        data: undefined,
         image: props.data,
         bounds: [west, south, east, north]
       });

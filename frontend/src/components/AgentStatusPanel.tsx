@@ -3,9 +3,9 @@ import React from 'react';
 import { Cpu, CheckCircle2, Clock, PlayCircle, AlertCircle, ArrowRight } from 'lucide-react';
 
 interface StepLog {
-  agent_name: str;
-  status: str;
-  summary: str;
+  agent_name: string;
+  status: string;
+  summary: string;
   execution_time_ms?: number;
 }
 
